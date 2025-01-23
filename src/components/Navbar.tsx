@@ -38,11 +38,9 @@ export const Navbar = () => {
             className="flex items-center space-x-2 cursor-pointer shrink-0"
             onClick={() => handleNavigation("/")}
           >
-            <img 
-              src="/lovable-uploads/9921530e-79c6-4a05-b933-d85a76fb50e2.png" 
-              alt="ScenePilot Logo" 
-              className="h-8 w-8 animate-fade-in"
-            />
+            <div className="flex items-center justify-center w-8 h-8">
+              <Clapperboard className="w-8 h-8 text-accent animate-glow" />
+            </div>
             <span className="text-primary text-xl font-bold">ScenePilot</span>
           </div>
 
