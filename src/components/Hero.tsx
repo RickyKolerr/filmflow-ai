@@ -12,7 +12,7 @@ export const Hero = () => {
             <Brain className="w-12 h-12 text-primary animate-glow" />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
-            Revolutionize Film Production with AI-Powered Tools
+            ScenePilot: Revolutionize Film Production with AI
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-primary/80 hover:text-primary transition-colors">
             Streamline your filmmaking process with automated call sheets, shot lists, budget projections, and real-time project management – all in one place.
