@@ -8,6 +8,10 @@ import { supabase } from "@/integrations/supabase/client";
 import Index from "./pages/Index";
 import { Pricing } from "@/components/Pricing";
 import Auth from "./pages/Auth";
+import { CallSheetsLanding } from "./pages/LandingPages/CallSheets";
+import { ShotListLanding } from "./pages/LandingPages/ShotList";
+import { BudgetLanding } from "./pages/LandingPages/Budget";
+import { ContractsLanding } from "./pages/LandingPages/Contracts";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +65,11 @@ const App = () => {
                 session ? <Pricing /> : <Navigate to="/auth" replace={true} />
               }
             />
+            {/* Landing Pages */}
+            <Route path="/call-sheets-landing" element={<CallSheetsLanding />} />
+            <Route path="/shot-list-landing" element={<ShotListLanding />} />
+            <Route path="/budget-landing" element={<BudgetLanding />} />
+            <Route path="/contracts-landing" element={<ContractsLanding />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
