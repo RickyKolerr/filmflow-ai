@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { LanguageToggle } from "./LanguageToggle";
+import { DarkModeToggle } from "./DarkModeToggle";
 import {
   Sheet,
   SheetContent,
@@ -62,7 +63,10 @@ export const Navbar = () => {
                 {item.name}
               </Button>
             ))}
-            <LanguageToggle />
+            <div className="flex items-center space-x-2">
+              <LanguageToggle />
+              <DarkModeToggle />
+            </div>
             <Button
               variant="ghost"
               onClick={handleSignOut}
@@ -102,7 +106,10 @@ export const Navbar = () => {
                     {item.name}
                   </Button>
                 ))}
-                <LanguageToggle />
+                <div className="flex items-center space-x-2">
+                  <LanguageToggle />
+                  <DarkModeToggle />
+                </div>
                 <Button
                   variant="ghost"
                   onClick={handleSignOut}
