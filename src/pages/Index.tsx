@@ -9,13 +9,13 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-navy">
       <Navbar />
-      <div className="pt-16"> {/* Add padding to account for fixed navbar */}
+      <main className="pt-16"> {/* Add padding to account for fixed navbar */}
         <Hero />
         <Features />
         <HowItWorks />
         <Testimonial />
         <Footer />
-      </div>
+      </main>
     </div>
   );
 };
