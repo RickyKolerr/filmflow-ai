@@ -19,6 +19,9 @@ export default {
     },
     extend: {
       colors: {
+        primary: "#FEF7CD", // Soft yellow
+        secondary: "#000000e6", // Rich black
+        accent: "#FFD700", // Bright yellow for highlights
         navy: "#0A1A2F",
         purple: "#6E44FF",
         softBlue: "#4A90E2",
@@ -27,34 +30,6 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
       },
       keyframes: {
         "fade-up": {
@@ -75,10 +50,19 @@ export default {
             opacity: "1",
           },
         },
+        glow: {
+          "0%, 100%": {
+            boxShadow: "0 0 15px rgba(254, 247, 205, 0.5)",
+          },
+          "50%": {
+            boxShadow: "0 0 30px rgba(254, 247, 205, 0.8)",
+          },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
         "fade-in": "fade-in 0.5s ease-out",
+        glow: "glow 2s ease-in-out infinite",
       },
     },
   },
