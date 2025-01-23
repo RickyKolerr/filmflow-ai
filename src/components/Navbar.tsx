@@ -35,25 +35,25 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div 
-            className="flex items-center space-x-2 cursor-pointer"
+            className="flex items-center space-x-2 cursor-pointer shrink-0"
             onClick={() => handleNavigation("/")}
           >
             <img 
-              src="/lovable-uploads/dec53da0-2720-4b96-b708-f0cbee639f15.png" 
+              src="/lovable-uploads/9921530e-79c6-4a05-b933-d85a76fb50e2.png" 
               alt="ScenePilot Logo" 
-              className="h-10 w-10 animate-fade-in"
+              className="h-8 w-8 animate-fade-in"
             />
             <span className="text-primary text-xl font-bold">ScenePilot</span>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center justify-end space-x-4 flex-1 ml-8">
             {menuItems.map((item) => (
               <Button
                 key={item.name}
                 variant="ghost"
                 onClick={() => handleNavigation(item.path)}
-                className="text-primary hover:text-accent hover:bg-primary/10 transition-all duration-300"
+                className="text-primary hover:text-accent hover:bg-primary/10 transition-all duration-300 whitespace-nowrap"
               >
                 <item.icon className="w-4 h-4 mr-2" />
                 {item.name}
