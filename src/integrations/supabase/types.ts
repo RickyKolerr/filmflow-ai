@@ -9,6 +9,21 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      admins: {
+        Row: {
+          created_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       feedback: {
         Row: {
           created_at: string
@@ -27,6 +42,30 @@ export type Database = {
           id?: string
           message?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      language_tokens: {
+        Row: {
+          created_at: string
+          english: string
+          id: string
+          key: string
+          vietnamese: string
+        }
+        Insert: {
+          created_at?: string
+          english: string
+          id?: string
+          key: string
+          vietnamese: string
+        }
+        Update: {
+          created_at?: string
+          english?: string
+          id?: string
+          key?: string
+          vietnamese?: string
         }
         Relationships: []
       }

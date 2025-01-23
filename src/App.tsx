@@ -12,6 +12,7 @@ import { CallSheetsLanding } from "./pages/LandingPages/CallSheets";
 import { ShotListLanding } from "./pages/LandingPages/ShotList";
 import { BudgetLanding } from "./pages/LandingPages/Budget";
 import { ContractsLanding } from "./pages/LandingPages/Contracts";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 const queryClient = new QueryClient();
 
@@ -42,37 +43,39 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/auth"
-              element={
-                !session ? <Auth /> : <Navigate to="/" replace={true} />
-              }
-            />
-            <Route
-              path="/"
-              element={
-                session ? <Index /> : <Navigate to="/auth" replace={true} />
-              }
-            />
-            <Route
-              path="/pricing"
-              element={
-                session ? <Pricing /> : <Navigate to="/auth" replace={true} />
-              }
-            />
-            {/* Landing Pages */}
-            <Route path="/call-sheets-landing" element={<CallSheetsLanding />} />
-            <Route path="/shot-list-landing" element={<ShotListLanding />} />
-            <Route path="/budget-landing" element={<BudgetLanding />} />
-            <Route path="/contracts-landing" element={<ContractsLanding />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/auth"
+                element={
+                  !session ? <Auth /> : <Navigate to="/" replace={true} />
+                }
+              />
+              <Route
+                path="/"
+                element={
+                  session ? <Index /> : <Navigate to="/auth" replace={true} />
+                }
+              />
+              <Route
+                path="/pricing"
+                element={
+                  session ? <Pricing /> : <Navigate to="/auth" replace={true} />
+                }
+              />
+              {/* Landing Pages */}
+              <Route path="/call-sheets-landing" element={<CallSheetsLanding />} />
+              <Route path="/shot-list-landing" element={<ShotListLanding />} />
+              <Route path="/budget-landing" element={<BudgetLanding />} />
+              <Route path="/contracts-landing" element={<ContractsLanding />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 };

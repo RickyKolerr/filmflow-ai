@@ -3,6 +3,7 @@ import { Menu, X, Clapperboard, Brain, FileText, Calendar, Users, MessageSquare,
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { LanguageToggle } from "./LanguageToggle";
 import {
   Sheet,
   SheetContent,
@@ -39,7 +40,6 @@ export const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary/95 backdrop-blur-sm border-b border-primary/10">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <div 
             className="flex items-center space-x-2 cursor-pointer shrink-0"
             onClick={() => handleNavigation("/")}
@@ -50,7 +50,6 @@ export const Navbar = () => {
             <span className="text-primary text-xl font-bold">ScenePilot</span>
           </div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center justify-end space-x-4 flex-1 ml-8">
             {menuItems.map((item) => (
               <Button
@@ -63,6 +62,7 @@ export const Navbar = () => {
                 {item.name}
               </Button>
             ))}
+            <LanguageToggle />
             <Button
               variant="ghost"
               onClick={handleSignOut}
@@ -73,7 +73,6 @@ export const Navbar = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button 
@@ -103,6 +102,7 @@ export const Navbar = () => {
                     {item.name}
                   </Button>
                 ))}
+                <LanguageToggle />
                 <Button
                   variant="ghost"
                   onClick={handleSignOut}
