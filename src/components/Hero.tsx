@@ -1,10 +1,37 @@
 import { Button } from "@/components/ui/button";
-import { Clapperboard, Brain, ArrowRight, Play } from "lucide-react";
+import { Clapperboard, Brain, ArrowRight, Play, Award, Shield, Users, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
   const navigate = useNavigate();
+
+  const trustBadges = [
+    {
+      name: 'Netflix',
+      description: 'Trusted by Netflix production teams worldwide',
+      icon: <Globe className="w-8 h-8 text-[#9b87f5]" />,
+      metric: '500+ Projects'
+    },
+    {
+      name: 'Universal',
+      description: 'Powering Universal Studios productions',
+      icon: <Award className="w-8 h-8 text-[#7E69AB]" />,
+      metric: '200+ Films'
+    },
+    {
+      name: 'Warner Bros',
+      description: 'Supporting Warner Bros production workflow',
+      icon: <Shield className="w-8 h-8 text-[#6E59A5]" />,
+      metric: '1000+ Users'
+    },
+    {
+      name: 'Paramount',
+      description: 'Enhancing Paramount Pictures efficiency',
+      icon: <Users className="w-8 h-8 text-[#E5DEFF]" />,
+      metric: '300+ Shows'
+    }
+  ];
 
   return (
     <div className="relative min-h-[90vh] flex items-center justify-center bg-navy overflow-hidden">
@@ -96,13 +123,27 @@ export const Hero = () => {
             </Button>
           </div>
           
-          {/* Trust badges */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            {['Netflix', 'Universal', 'Warner Bros', 'Paramount'].map((company) => (
-              <div key={company} className="text-primary/60 text-sm font-semibold tracking-wider">
-                {company}
-              </div>
-            ))}
+          {/* Enhanced Trust badges section */}
+          <div className="mt-24 mb-12 animate-fade-up">
+            <h3 className="text-2xl font-semibold text-primary mb-8">Trusted by Industry Leaders</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {trustBadges.map((badge) => (
+                <motion.div
+                  key={badge.name}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-navy/50 backdrop-blur-sm p-6 rounded-xl border border-purple/20 hover:border-purple/40 transition-all duration-300"
+                >
+                  <div className="flex flex-col items-center text-center space-y-4">
+                    <div className="p-3 bg-purple/10 rounded-full">
+                      {badge.icon}
+                    </div>
+                    <h4 className="text-xl font-semibold text-primary">{badge.name}</h4>
+                    <p className="text-primary/70 text-sm">{badge.description}</p>
+                    <span className="text-[#9b87f5] font-bold">{badge.metric}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
