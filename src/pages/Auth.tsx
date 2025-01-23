@@ -23,6 +23,9 @@ export const Auth = () => {
         const { error } = await supabase.auth.signUp({
           email,
           password,
+          options: {
+            emailRedirectTo: window.location.origin,
+          },
         });
         if (error) throw error;
         toast({
@@ -34,7 +37,14 @@ export const Auth = () => {
           email,
           password,
         });
-        if (error) throw error;
+        if (error) {
+          if (error.message === "Invalid login credentials") {
+            throw new Error(
+              "Invalid login credentials. Please check your email and password, or sign up if you don't have an account."
+            );
+          }
+          throw error;
+        }
         navigate("/");
       }
     } catch (error: any) {
@@ -82,6 +92,7 @@ export const Auth = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              minLength={6}
               className="bg-black/20 border-primary/20 text-primary placeholder:text-primary/50"
             />
           </div>
