@@ -32,7 +32,7 @@ export const FileManager = () => {
       const { error } = await supabase.storage
         .from("uploads")
         .upload(fileName, file, {
-          onUploadProgress: (progress) => {
+          onProgress: (progress) => {
             const percent = (progress.loaded / progress.total) * 100;
             setUploadProgress(percent);
           },
