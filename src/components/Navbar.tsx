@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Menu, X, Clapperboard, Brain, FileText, Calendar, Users, MessageSquare, DollarSign } from "lucide-react";
+import { Menu, X, Clapperboard, Brain, FileText, Calendar, Users, MessageSquare, DollarSign, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Sheet,
   SheetContent,
@@ -27,6 +28,11 @@ export const Navbar = () => {
   const handleNavigation = (path: string) => {
     navigate(path);
     setIsOpen(false);
+  };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate("/auth");
   };
 
   return (
@@ -57,6 +63,14 @@ export const Navbar = () => {
                 {item.name}
               </Button>
             ))}
+            <Button
+              variant="ghost"
+              onClick={handleSignOut}
+              className="text-primary hover:text-accent hover:bg-primary/10 transition-all duration-300"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Sign Out
+            </Button>
           </div>
 
           {/* Mobile Menu */}
@@ -89,6 +103,14 @@ export const Navbar = () => {
                     {item.name}
                   </Button>
                 ))}
+                <Button
+                  variant="ghost"
+                  onClick={handleSignOut}
+                  className="w-full justify-start text-primary hover:text-accent hover:bg-primary/10 transition-all duration-300"
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Sign Out
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
