@@ -7,9 +7,33 @@ export const Hero = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-b from-navy via-purple/20 to-navy overflow-hidden">
-      {/* Animated background pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMjIyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-10 animate-[pulse_4s_ease-in-out_infinite]"></div>
+    <div className="relative min-h-[90vh] flex items-center justify-center bg-navy overflow-hidden">
+      {/* Background images with overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 grid grid-cols-2 gap-4 opacity-20">
+          <div className="relative h-full">
+            <img
+              src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81"
+              alt="Filmmaking process"
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <div className="grid grid-rows-2 gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+              alt="Film editing"
+              className="object-cover w-full h-full"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5"
+              alt="Film production"
+              className="object-cover w-full h-full"
+            />
+          </div>
+        </div>
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy via-purple/80 to-navy opacity-95"></div>
+      </div>
       
       {/* Floating particles effect */}
       <div className="absolute inset-0 overflow-hidden">
