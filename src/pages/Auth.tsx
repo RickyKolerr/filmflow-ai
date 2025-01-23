@@ -20,32 +20,52 @@ export const Auth = () => {
 
     try {
       if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
+        // Handle Sign Up
+        const { error: signUpError } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            emailRedirectTo: window.location.origin,
+            emailRedirectTo: `${window.location.origin}/auth/callback`,
           },
         });
-        if (error) throw error;
-        toast({
-          title: "Success!",
-          description: "Please check your email to verify your account.",
-        });
+
+        if (signUpError) {
+          if (signUpError.message.includes("User already registered")) {
+            toast({
+              title: "Account exists",
+              description: "This email is already registered. Please sign in instead.",
+              variant: "destructive",
+            });
+            setIsSignUp(false);
+          } else {
+            throw signUpError;
+          }
+        } else {
+          toast({
+            title: "Success!",
+            description: "Please check your email to verify your account.",
+          });
+        }
       } else {
-        const { error } = await supabase.auth.signInWithPassword({
+        // Handle Sign In
+        const { error: signInError } = await supabase.auth.signInWithPassword({
           email,
           password,
         });
-        if (error) {
-          if (error.message === "Invalid login credentials") {
-            throw new Error(
-              "Invalid login credentials. Please check your email and password, or sign up if you don't have an account."
-            );
+
+        if (signInError) {
+          if (signInError.message === "Invalid login credentials") {
+            toast({
+              title: "Invalid credentials",
+              description: "Please check your email and password, or sign up if you don't have an account.",
+              variant: "destructive",
+            });
+          } else {
+            throw signInError;
           }
-          throw error;
+        } else {
+          navigate("/");
         }
-        navigate("/");
       }
     } catch (error: any) {
       toast({
